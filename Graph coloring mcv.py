@@ -1,6 +1,6 @@
 pk = {}
 vertex = {}
-
+colorSeq = []
 color = {1:'Red', 2:'Green', 3:'Blue'}
 
 def printColor():
@@ -9,18 +9,16 @@ def printColor():
 
 
 def colorGraph():
-    start = pickMRV(list(pk.keys()))
-
-    vertex[start] = 1
+    ver = pickMRV(list(pk.keys()))
+    colorSeq.append(ver)
+    vertex[ver] = 1
     
     for j in pk.keys():
         ver = pickMRV(pk[j])
-        if ver != 0:
+        colorSeq.append(ver)
+        if ver != "":
             vertex[ver] = safeColor(ver)
         
-    printColor()
-
-    return
 
 def safeColor(ver):
     col = []
@@ -33,7 +31,7 @@ def safeColor(ver):
 
 
 def pickMRV(ver):
-    minNode = 0
+    minNode = ""
     lenNode = 0
     for i in ver:
         if vertex[i] == 0:
@@ -64,5 +62,9 @@ def main():
     }
 
     colorGraph()
+    print("Coloring Sequence:")
+    for i in colorSeq:
+        print(i)
+    printColor()
 
 main()

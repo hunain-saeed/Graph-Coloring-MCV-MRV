@@ -17,9 +17,7 @@ def colorGraph():
         colorSeq.append(ver)
         if ver != "":
             vertex[ver] = safeColor(ver)
-        
 
-    return
 
 def safeColor(ver):
     col = []
